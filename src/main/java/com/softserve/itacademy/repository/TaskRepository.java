@@ -31,7 +31,7 @@ public class TaskRepository {
     public boolean update(Task newTask) {
         Task oldTask = read(newTask.getId());
         if (oldTask != null) {
-            boolean status = all().stream()
+            boolean status = todo.stream()
                     .filter(task -> task.getId() != oldTask.getId())
                     .anyMatch(task -> task.getTitle().equals(newTask.getTitle()));
             if (!status) {

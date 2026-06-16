@@ -8,14 +8,15 @@ public class Task {
 
     private static int counter = 1;
 
+    { id = counter++; }
+
     public Task() {
-        id = counter++;
+
     }
 
     public Task(String title, Priority priority) {
         this.title = title;
         this.priority = priority;
-        id = counter++;
     }
 
     public int getId() {
