@@ -24,7 +24,7 @@ public class CreateTaskServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/create-task.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(Pages.CREATE.webInfUrl());
         requestDispatcher.forward(request, response);
     }
 
@@ -40,17 +40,17 @@ public class CreateTaskServlet extends HttpServlet {
             boolean created = taskRepository.create(task);
 
             if (created) {
-                response.sendRedirect("/tasks-list");
+                response.sendRedirect(Pages.LIST.url());
             } else {
                 request.setAttribute("error", "Task with a given name already exists!");
                 request.setAttribute("title", title);
                 request.setAttribute("priority", priority);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/create-task.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher(Pages.CREATE.webInfUrl());
                 requestDispatcher.forward(request, response);
             }
         } else {
             request.setAttribute("error", "Title and priority must not be empty!");
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/create-task.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher(Pages.CREATE.webInfUrl());
             requestDispatcher.forward(request, response);
         }
     }

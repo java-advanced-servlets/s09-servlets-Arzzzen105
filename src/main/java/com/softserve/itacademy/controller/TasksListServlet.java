@@ -23,7 +23,7 @@ public class TasksListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/tasks-list.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(Pages.LIST.webInfUrl());
         request.setAttribute("tasks", taskRepository.all());
         requestDispatcher.forward(request, response);
     }
