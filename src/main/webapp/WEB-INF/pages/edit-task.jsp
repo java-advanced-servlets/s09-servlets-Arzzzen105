@@ -18,7 +18,7 @@
         <% if (request.getAttribute("error") != null) {%>
             <div class="alert-danger">
                 <%= request.getAttribute("error") %>
-            </div>>
+            </div>
         <% } %>
         <%
             Task task = (Task) request.getAttribute("task");
