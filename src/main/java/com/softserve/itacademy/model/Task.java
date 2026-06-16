@@ -1,20 +1,28 @@
 package com.softserve.itacademy.model;
 
+import java.util.Objects;
+
 public class Task {
 
     private final int id;
     private String title;
     private Priority priority;
 
-    private static int counter = 1;
+    private static int counter = 0;
 
-    { id = counter++; }
 
     public Task() {
-
+        this.id = counter++;
     }
 
     public Task(String title, Priority priority) {
+        this();
+        this.title = title;
+        this.priority = priority;
+    }
+
+    public Task(int id, String title, Priority priority) {
+        this.id = id;
         this.title = title;
         this.priority = priority;
     }
@@ -46,5 +54,17 @@ public class Task {
                 ", title='" + title + '\'' +
                 ", priority=" + priority +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(title, task.title) && priority == task.priority;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, priority);
     }
 }
